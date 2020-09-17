@@ -1,0 +1,7 @@
+
+
+# Health check - expect a status of 200
+http://home-server.local/health-check
+
+# Request for a predict
+http://home-server.local/predict/q?speed=2.2&cores=12&storage=2000&ram=32
