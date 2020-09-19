@@ -72,7 +72,7 @@ RUN git clone https://github.com/PAIR-code/facets.git && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-### Run local requirements
+### Install local requirements.txt ###
 COPY requirements.txt requirements.txt
 RUN pip --no-cache-dir install -r requirements.txt
 
