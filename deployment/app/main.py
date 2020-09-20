@@ -21,6 +21,11 @@ print('------------------------------')
 def home():
   return render_template('index.html')
 
+#model.html
+@app.route("/model")
+def model_page():
+  return render_template('model.html')
+
 # health check
 # http://home-server.local/api/health-check
 @app.route("/api/health-check")
@@ -30,7 +35,7 @@ def isAlive():
 # route at /predict/q that follows the format of
 # http://home-server.local/api/predict?speed=2.2&cores=12&storage=2000&ram=32
 @app.route("/api/predict")
-def predict_query():
+def predict():
 
   x1 = request.args['speed']
   x2 = request.args['cores']
