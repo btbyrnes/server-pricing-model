@@ -17,4 +17,4 @@ COPY ./app /app
 
 RUN pip --no-cache-dir install -r /app/requirements.txt
 
-EXPOSE 80
+EXPOSE 80 443

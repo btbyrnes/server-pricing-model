@@ -5,16 +5,16 @@ import os
 # model.py import from app/model folder
 from model import model
 
-app = Flask(__name __)
+app = Flask(__name__)
 
+print('------------------------------')
+print('Brett Byrnes')
+print('www.bbyrnes.com')
+print('brettbyrnes@gmail.com')
 print('')
-print(os.getcwd())
-print('')
-
-# hello world
-'''@app.route("/")
-def hello():
-  return "hello from nginx"'''
+print('webserver has started')
+print('working directory: %s' % os.getcwd())
+print('------------------------------')
 
 # index.html
 @app.route("/")
@@ -22,7 +22,7 @@ def home():
   return render_template('index.html')
 
 # health check
-# http://home-server.local/health-check
+# http://home-server.local/api/health-check
 @app.route("/api/health-check")
 def isAlive():
   return jsonify(status=200)
