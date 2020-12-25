@@ -24,7 +24,8 @@ def home():
 #model.html
 @app.route("/model")
 def model_page():
-  return render_template('model.html')
+  answer = 5.0
+  return render_template('model.html', prediction = '{}'.format(str(answer)))
 
 # health check
 # http://home-server.local/api/health-check
@@ -33,7 +34,7 @@ def isAlive():
   return jsonify(status=200)
 
 # route at /predict/q that follows the format of
-# http://home-server.local/api/predict?speed=2.2&cores=12&storage=2000&ram=32
+# http://192.168.1.200/api/predict?speed=2.2&cores=12&storage=2000&ram=32
 @app.route("/api/predict")
 def predict():
 
@@ -41,6 +42,9 @@ def predict():
   x2 = request.args['cores']
   x3 = request.args['storage']
   x4 = request.args['ram']
+
+  print(type(x1), type(x2), type(x3), type(x4))
+
   # x's are sent as strings from the query
   # the predict_handler returns the value of y as a number, this will be
   # jsonify'd
@@ -53,3 +57,18 @@ def predict():
     ram=x4,
     price=y
   )
+
+# ## TO DO - ADD THE CODE TO RENDER THE MODEL PAGE
+@app.route("/model/predict", methods=['POST'])
+def model_predict_page():
+
+  features = list(request.form.values())
+
+  x1 = features[0]
+  x2 = features[1]
+  x3 = features[2]
+  x4 = features[3]
+
+  answer =  model.predict_handler(x1,x2,x3,x4)
+
+  return render_template('model.html', prediction = '${:.2f}'.format(float(answer)))
