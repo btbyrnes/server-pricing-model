@@ -9,19 +9,19 @@
 
 <body>
  <div class="login">
-	<h1>Predict Keyword Analysis</h1>
-
+	<h1>Server Pricing Model</h1>
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<textarea rows = "30" cols = "100" name = "description" placeholder="Description" required="required" ></textarea>
-        
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    <form action="{{url_for('model_predict_page')}}" method="post">
+      <input type="text" name="speed" placeholder="speed" required="required" />
+      <input type="text" name="cores" placeholder="cores" required="required" />
+      <input type="text" name="storage" placeholder="storage" required="required" />
+      <input type="text" name="ram" placeholder="ram" required="required" />        
+      <button type="Predict" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
-   <br>
-   <br>
-
+  <br>
+  <br>
+  {{prediction}}
  </div>
 
 
