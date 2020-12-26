@@ -19,13 +19,18 @@ print('------------------------------')
 # index.html
 @app.route("/")
 def home():
-  return render_template('index.html')
+  return index()
+
+# index.html
+@app.route("/index")
+def index():
+  return render_template('index.html', health_check=str(isAlive()))
 
 #model.html
 @app.route("/model")
 def model_page():
-  answer = 5.0
-  return render_template('model.html', prediction = '{}'.format(str(answer)))
+  answer = 0.0
+  return render_template('model.html', prediction = '${:.2f}'.format(float(answer)))
 
 # health check
 # http://home-server.local/api/health-check
